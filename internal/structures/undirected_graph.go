@@ -25,6 +25,13 @@ type UndirectedGraph struct {
 	edges map[NodeID]map[NodeID]struct{}
 }
 
+// NewUndirectedGraph returns an empty, ready-to-use UndirectedGraph.
+func NewUndirectedGraph() *UndirectedGraph {
+	return &UndirectedGraph{
+		edges: make(map[NodeID]map[NodeID]struct{}),
+	}
+}
+
 // Neighbors returns the IDs of all nodes directly connected to the specfied id.
 func (g *UndirectedGraph) Neighbors(id NodeID) []NodeID {
 	g.mu.RLock()
